@@ -112,7 +112,7 @@ class RabbitGame extends Phaser.Scene {
         cursors = this.input.keyboard.createCursorKeys();
 
 //make carrot appear one by one
-        this.timedEvent = this.time.addEvent({ delay: 500, callback: this.doSomething, callbackScope: this, repeat: 10 });
+        this.timedEvent = this.time.addEvent({ delay: 1500, callback: this.doSomething, callbackScope: this, repeat: 10 });
 
         scoreText = this.add.text(16, 16, 'score: 0', {fontSize: '32px', fill: '#000'});
 
