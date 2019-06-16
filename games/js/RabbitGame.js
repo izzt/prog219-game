@@ -124,13 +124,14 @@ class RabbitGame extends Phaser.Scene {
     doSomething() {
         //this is to set the carrot on the platforms
         var y = [topPlatform, platformThird, platformThird, platformThird, ground, ground, ground, ground, platformSecond, platformSecond, platformSecond]
-//        var x = [45, 45 + 70, ]
+
         let i = carrotIndex;
         var x = 30 + i * 70;
+
+        //this is to set the carrot left on the ground platform to make space for the rabbit
         if (y[i] == ground) {
             x += 200
         }
-
         let carrot = this.physics.add.staticSprite(x, y[i].body.y - 20, 'carrot');
         this.physics.add.collider(rabbit, carrot, this.collectcarrot, null, this);
         carrotIndex++;
@@ -171,6 +172,7 @@ class RabbitGame extends Phaser.Scene {
             sound.play();
         }
         //update where tomato is when using tweens, so that when rabbit hit the tomato, gameover
+        //when using tweens, the body is not updated, hence the colision doesnt work, without refreshBody.
         tomato.refreshBody()
     }
 

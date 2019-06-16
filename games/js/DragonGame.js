@@ -36,11 +36,9 @@ class DragonGame extends Phaser.Scene {
         //
         dragonBgMusic.play();
 
-        //  Set the camera and physics bounds to be the size of 4x4 bg images
         this.cameras.main.setBounds(0, 0, 1920 , 600 );
         this.physics.world.setBounds(0, 0, 1920 , 600 );
 
-        //  Mash 4 images together to create our background
         this.add.image(0, -300, 'bg').setOrigin(0);
      
         egg1=this.physics.add.staticSprite(400,200,'egg');
@@ -48,6 +46,7 @@ class DragonGame extends Phaser.Scene {
         egg3=this.physics.add.staticSprite(1300,500,'egg');
         egg4=this.physics.add.staticSprite(1800,30,'egg');
 
+        //Arrow
         arrows = this.physics.add.group();
         this.timedEvent = this.time.addEvent({ delay: 1500, callback: this.doSomething, callbackScope: this, repeat: 20 });
 
@@ -55,9 +54,9 @@ class DragonGame extends Phaser.Scene {
         dragonMove.setCollideWorldBounds(true);
         dragonMove.body.allowGravity = false;
 
-
+        //camera follows when dragon moves
         this.cameras.main.startFollow(dragonMove);
-
+        //camera position at x(-300)
         this.cameras.main.followOffset.set(-300, 0);
         this.anims.create({
             key: 'left',
